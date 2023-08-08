@@ -24,7 +24,7 @@
   "mainHero": {
     "title": "Savy",
     "subtitle": "Cart",
-    "description": "Track personal purchases, No more paper and pencil to go to the supermarket.",
+    "description": "Create the grocery list and carry it in your pocket. no more pencil and paper.",
     "img": "/assets/images/happyTeam.jpeg",
     "primaryAction": {
       "text": "Get started",
