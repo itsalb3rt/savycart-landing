@@ -25,7 +25,7 @@
     "title": "Savy",
     "subtitle": "Cart",
     "description": "Create the grocery list and carry it in your pocket. no more pencil and paper.",
-    "img": "/assets/images/happyTeam.jpeg",
+    "img": "/assets/main-demo.png",
     "primaryAction": {
       "text": "Get started",
       "href": "#"
@@ -41,12 +41,12 @@
       {
         "title": "Shopping History",
         "description": "Access and review your shopping history, empowering you to make smarter decisions and analyze your spending patterns.",
-        "img": "/assets/images/product1.jpg"
+        "img": "/assets/demo-1.png"
       },
       {
         "title": "Synchronized Cloud Storage",
         "description": "Safeguard your data with secure cloud storage, ensuring seamless synchronization across all your devices.",
-        "img": "/assets/images/product2.jpg"
+        "img": "/assets/demo-2.png"
       }
     ]
   },
