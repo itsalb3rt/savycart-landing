@@ -17,12 +17,13 @@ const MainHero = () => {
           {mainHero.description}
         </p>
         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-          <div className="rounded-md shadow">
-            <a
-              href={mainHero.primaryAction.href}
-              className={`w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-background bg-primary hover:bg-border hover:text-primary md:py-4 md:text-lg md:px-10`}
-            >
-              {mainHero.primaryAction.text}
+          <div>
+            <a href={mainHero.primaryAction.href}>
+              <img
+                alt="logo"
+                className="h-16 w-auto sm:h-16"
+                src="assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+              />
             </a>
           </div>
           <div className="mt-3 sm:mt-0 sm:ml-3">
