@@ -67,12 +67,18 @@ const About = () => {
           </a>
         </div>
         <div className="flex items-center mt-6">
+          <a href="/policy">Policy</a>
+          <span className="mx-4">|</span>
+          <a href="/terms">Terms of use</a>
+        </div>
+        <div className="flex items-center mt-6">
           <p className="mt-6 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">
             &copy; {new Date().getFullYear()} designed by{' '}
             <a href="https://github.com/issaafalkattan" rel="nofollow">
               Issaaf Kattan
             </a>
           </p>
+          d
         </div>
       </div>
     </div>
