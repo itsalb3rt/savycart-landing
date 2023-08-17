@@ -4,12 +4,12 @@
 
 
 :root {
-  --color-primary: #ec4755;
-  --color-secondary: #a12c34;
+  --color-primary: #03A9F4;
+  --color-secondary: #03A9F4;
   --color-tertiaty: #99a0a3;
 }
 
-a { 
+a {
   @apply text-red-700;
 }
 
@@ -25,4 +25,13 @@ a:hover {
 
 .content ul {
   @apply my-6;
+}
+
+a {
+  color: var(--color-primary)!important;
+}
+
+a:hover {
+  border: none!important;
+  cursor: pointer;
 }
