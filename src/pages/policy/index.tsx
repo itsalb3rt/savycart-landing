@@ -73,7 +73,7 @@ export default function Policy() {
         <h2 className="text-lg font-semibold mt-6 mb-2">Contact Us</h2>
         <p className="mb-4">
           If you have any questions or concerns about our Privacy Policy, please
-          contact us at [contact@email.com].
+          contact us at contact@albert.do
         </p>
       </div>
     </div>

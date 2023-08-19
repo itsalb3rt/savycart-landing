@@ -62,7 +62,7 @@ const TermsAndConditions = () => {
         <h2 className="text-lg font-semibold mt-6 mb-2">Contact Us</h2>
         <p className="mb-4">
           If you have any questions or concerns about our Terms and Conditions,
-          please contact us at contact@albert.do.
+          please contact us at contact@albert.do
         </p>
 
         <p className="mt-8">Last updated: 2023-08-10</p>
