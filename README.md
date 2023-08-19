@@ -1,4 +1,4 @@
-# React.js landing page template v2
+# SavyCart Landing Page Template
 
 ## <a href="https://react-landing-page-template-2021.vercel.app/"> LIVE DEMO</a>
 
@@ -86,8 +86,6 @@ Licensed under the MIT License, Copyright © 2021
   
 
 ## Liked this template? <a href="https://www.buymeacoffee.com/issaaf">Buy me a coffee ☕️</a>
-
-
 
 
 ---
