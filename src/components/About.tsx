@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Link from 'next/link';
+
 import config from '../config/index.json';
 
 const About = () => {
@@ -67,9 +69,9 @@ const About = () => {
           </a>
         </div>
         <div className="flex items-center mt-6">
-          <a href="/policy">Policy</a>
+          <Link href="/policy">Policy</Link>
           <span className="mx-4">|</span>
-          <a href="/terms">Terms of use</a>
+          <Link href="/terms">Terms of use</Link>
         </div>
         <div className="flex items-center mt-6">
           <p className="mt-6 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">
