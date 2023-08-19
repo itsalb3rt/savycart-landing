@@ -65,7 +65,7 @@ const TermsAndConditions = () => {
           please contact us at contact@albert.do.
         </p>
 
-        <p className="mt-8">Last updated: [Date]</p>
+        <p className="mt-8">Last updated: 2023-08-10</p>
       </div>
     </div>
   );
