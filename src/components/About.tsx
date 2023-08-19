@@ -80,7 +80,6 @@ const About = () => {
               Issaaf Kattan
             </a>
           </p>
-          d
         </div>
       </div>
     </div>
