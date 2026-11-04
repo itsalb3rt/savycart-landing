@@ -2,7 +2,7 @@ export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
 
 declare global {
   interface Window {
-    gtag: any;
+    gtag: (...args: unknown[]) => void;
   }
 }
 
@@ -20,10 +20,10 @@ export const event = ({
   label,
   value,
 }: {
-  action: any;
-  category: any;
-  label: any;
-  value: any;
+  action: string;
+  category: string;
+  label: string;
+  value?: number;
 }) => {
   window.gtag('event', action, {
     event_category: category,

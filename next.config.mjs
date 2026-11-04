@@ -1,9 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+import bundleAnalyzer from '@next/bundle-analyzer';
+
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = withBundleAnalyzer({
+export default withBundleAnalyzer({
   poweredByHeader: false,
   trailingSlash: true,
   basePath: '',
@@ -11,4 +12,6 @@ module.exports = withBundleAnalyzer({
   // So, the source code is "basePath-ready".
   // You can remove `basePath` if you don't need it.
   reactStrictMode: true,
+  // Static export: `next build` writes HTML/CSS/JS to `out/` (Netlify publishes it).
+  output: 'export',
 });

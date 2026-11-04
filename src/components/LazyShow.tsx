@@ -4,33 +4,35 @@ import { motion, useAnimation } from 'framer-motion';
 
 function useOnScreen(
   ref: MutableRefObject<HTMLDivElement | null>,
-  rootMargin = '0px'
+  rootMargin = '0px',
 ) {
   const [isIntersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
-    let currentRef: any = null;
+    let currentRef: Element | null = null;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) setIntersecting(entry?.isIntersecting);
       },
       {
         rootMargin,
-      }
+      },
     );
-    if (ref && ref?.current) {
+    if (ref.current) {
       currentRef = ref.current;
       observer.observe(currentRef);
     }
     return () => {
-      observer.unobserve(currentRef);
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
     };
   }, [ref, rootMargin]); // Empty array ensures that effect is only run on mount and unmount
 
   return isIntersecting;
 }
 
-const LazyShow = ({ children }: { children: React.ReactChild }) => {
+const LazyShow = ({ children }: { children: React.ReactNode }) => {
   const controls = useAnimation();
   const rootRef = useRef<HTMLDivElement>(null);
   const onScreen = useOnScreen(rootRef);

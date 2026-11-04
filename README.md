@@ -13,15 +13,15 @@ This is a React.js/Next.js based landing page plug-n-play template, ideal for st
 - 📱  Responsive design
 - 🔥 [Next.js](https://nextjs.org) for Static Site Generator
 
-- 🎨 Integrate with [Tailwind CSS](https://tailwindcss.com) (w/ JIT mode)
+- 🎨 Integrate with [Tailwind CSS](https://tailwindcss.com)
 
-- 💅 PostCSS for processing Tailwind CSS and integrated to `styled-jsx`
+- 💅 PostCSS for processing Tailwind CSS
 
 - 🎉 Type checking [TypeScript](https://www.typescriptlang.org)
 
 - 🗂 VSCode configuration: Debug, Settings, Tasks and extension for PostCSS, ESLint, Prettier, TypeScript
 
-- 🤖 SEO metadata, JSON-LD and Open Graph tags with Next SEO
+- 🤖 SEO page titles with `next/head`
 
 - 🖱️ One click deployment with Vercel or Netlify (or manual deployment to any hosting services)
 
@@ -38,13 +38,15 @@ Built-in feature from Next.js:
 ```
 git clone https://github.com/issaafalkattan/react-landing-page-template-2021.git
 cd react-landing-page-template-2021
-yarn
+npm install
 ```
+
+Requires Node.js 20.9 or newer.
 
 Then, you can run locally in development mode with live reload:
 
 ```
-yarn dev
+npm run dev
 ```
 
 Open <http://localhost:3000> with your favorite browser to see your project.
@@ -53,7 +55,7 @@ Open <http://localhost:3000> with your favorite browser to see your project.
 
  1. **Content**: change the configuration in the ```src/config/index.json``` file to change the content of the landing page to match your use ```src/config/index.json```  folder and .
  2. **Images**:  add any images/icons..etc to the ```public/assets/images```  folder and update their reference source in ```src/config/index.json```.
- 3. **Theme**:  to change the theme, update the ```tailwind.config.js```  file to match the theme of your branding. [Tutorial](https://tailwindcss.com/docs/configuration).
+  3. **Theme**:  to change the theme, update the `@theme` block in ```src/styles/main.css``` to match the theme of your branding. [Tutorial](https://tailwindcss.com/docs/theme).
 
 #### 3. Deploy to production
 
@@ -61,19 +63,16 @@ Open <http://localhost:3000> with your favorite browser to see your project.
 
 ##### Deploy manually
 
-You can see the results locally in production mode with:
-
-  ```
-yarn build
-yarn start
-```
-
-The generated HTML and CSS files are minified (built-in feature from Next js). It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
-
-You can create an optimised production build with:
+Create an optimised production build (static site export):
 
 ```
-yarn build-prod
+npm run build-prod
+```
+
+The generated HTML and CSS files are minified (built-in feature of Next.js) and unused [Tailwind CSS](https://tailwindcss.com) classes are removed. The deployable site is written to the `out/` folder — preview it locally with any static file server, e.g.:
+
+```
+npx serve out
 ```
 
 ### Contributions

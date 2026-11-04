@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Head from 'next/head';
 
 import config from '../../config/index.json';
@@ -23,7 +21,7 @@ const TermsAndConditions = () => {
         <h2 className="text-lg font-semibold mt-6 mb-2">
           User Responsibilities
         </h2>
-        <p className="mb-4">
+        <div className="mb-4">
           When using our app, you agree to:
           <ul className="list-disc list-inside">
             <li>Use the app for lawful purposes only</li>
@@ -31,12 +29,12 @@ const TermsAndConditions = () => {
             <li>Respect other users and their data</li>
             <li>Not engage in any harmful or malicious activities</li>
           </ul>
-        </p>
+        </div>
 
         <h2 className="text-lg font-semibold mt-6 mb-2">
           Intellectual Property
         </h2>
-        <p className="mb-4">
+        <div className="mb-4">
           Our app and its content are protected by intellectual property laws.
           You agree not to:
           <ul className="list-disc list-inside">
@@ -44,7 +42,7 @@ const TermsAndConditions = () => {
             <li>Use our trademarks or logos without permission</li>
             <li>Create derivative works based on our app</li>
           </ul>
-        </p>
+        </div>
 
         <h2 className="text-lg font-semibold mt-6 mb-2">Privacy</h2>
         <p className="mb-4">

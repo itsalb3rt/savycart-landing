@@ -1,12 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-
-:root {
-  --color-primary: #03A9F4;
-  --color-secondary: #03A9F4;
-  --color-tertiaty: #99a0a3;
+@theme {
+  --color-primary: #03a9f4;
+  --color-secondary: #03a9f4;
+  --color-tertiary: #99a0a3;
+  --color-border: #1a2e35;
+  --color-background: #ffffff;
 }
 
 a {
@@ -17,8 +16,6 @@ a:hover {
   @apply border-b-2 border-red-700;
 }
 
-
-
 .content p {
   @apply my-6;
 }
@@ -28,10 +25,10 @@ a:hover {
 }
 
 a {
-  color: var(--color-primary)!important;
+  color: var(--color-primary) !important;
 }
 
 a:hover {
-  border: none!important;
+  border: none !important;
   cursor: pointer;
 }

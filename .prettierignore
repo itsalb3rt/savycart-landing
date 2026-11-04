@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+next-env.d.ts
+package-lock.json
+yarn.lock
+
+# Not part of this repo's formatting surface (prettier only runs on code + JSON)
+.github
+*.md
+public

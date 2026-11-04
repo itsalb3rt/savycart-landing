@@ -11,6 +11,9 @@ const useResponsiveSize = () => {
 
   useEffect(() => {
     window.addEventListener('resize', setSizes);
+    // Initial measure on mount: starting from 0 and setting state here avoids
+    // a hydration mismatch during static export (window is undefined at build).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSizes();
   }, [setSizes]);
 
