@@ -75,7 +75,7 @@ const Features = () => {
                 >
                   <span
                     aria-hidden="true"
-                    className={`absolute top-[3px] h-[28px] w-[28px] rounded-full bg-white transition-transform duration-200 md:h-[32px] md:w-[32px] ${
+                    className={`absolute left-0 top-[3px] h-[28px] w-[28px] rounded-full bg-white transition-transform duration-200 md:h-[32px] md:w-[32px] ${
                       isOn
                         ? 'translate-x-[27px] md:translate-x-[31px]'
                         : 'translate-x-[3px]'
