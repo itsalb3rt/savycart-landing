@@ -1,7 +1,7 @@
 export const AppConfig = {
   site_name: 'SavyCart',
-  title: 'SavyCart',
+  title: 'SavyCart — The grocery list that remembers prices',
   description:
-    'Create the grocery list and carry it in your pocket. no more pencil and paper.',
+    'SavyCart is the grocery list that remembers prices — build lists, track purchases, and review your shopping history on iPhone and the web. Works offline.',
   locale: 'en',
 };

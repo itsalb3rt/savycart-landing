@@ -18,109 +18,131 @@
     }
   ],
   "callToAction": {
-    "text": "Get started",
-    "href": "#"
+    "text": "Get the app",
+    "href": "https://apps.apple.com/app/savycart/id6458534889"
   },
   "mainHero": {
-    "title": "Savy",
-    "subtitle": "Cart",
-    "description": "Create the grocery list and carry it in your pocket. no more pencil and paper.",
-    "img": "/assets/main-demo.png",
+    "headlineLines": ["The grocery list", "that remembers prices"],
+    "description": "Build your list, shop without a signal, and see what every trip actually cost. No more pencil and paper.",
     "primaryAction": {
-      "text": "Get started",
+      "text": "Download on the App Store",
       "href": "https://apps.apple.com/app/savycart/id6458534889"
     },
     "secondaryAction": {
-      "text": "Web Version",
+      "text": "Open web version",
       "href": "https://sheiley-shop.netlify.app"
     }
   },
   "product": {
-    "title": "Start now!",
+    "title": "The real app",
+    "description": "Every screen below is SavyCart doing its job — lists you can search, history you can sort, totals you can trust.",
     "items": [
       {
-        "title": "Shopping History",
-        "description": "Access and review your shopping history, empowering you to make smarter decisions and analyze your spending patterns.",
-        "img": "/assets/demo-1.png"
+        "title": "Your list, searchable and starred",
+        "description": "Find any product in seconds, star the staples you always buy, and keep brands, units, and prices in one place.",
+        "img": "/assets/product-list.jpeg",
+        "alt": "SavyCart product list with search, favorites, and prices"
       },
       {
-        "title": "Synchronized Cloud Storage",
-        "description": "Safeguard your data with secure cloud storage, ensuring seamless synchronization across all your devices.",
-        "img": "/assets/demo-2.png"
+        "title": "Every trip, remembered",
+        "description": "Each shopping run is saved with the store name, date, and total — so you can compare visits and spot where spending creeps up.",
+        "img": "/assets/shipping-history.jpeg",
+        "alt": "SavyCart shopping history with place, date, and total price"
+      },
+      {
+        "title": "Prices over time, per product",
+        "description": "Open any item to see what you paid on each date. Watch fluctuations before you buy, and make smarter choices at the shelf.",
+        "img": "/assets/demo-1.png",
+        "alt": "Purchase history modal showing product prices across dates"
       }
     ]
   },
   "features": {
-    "title": "Latest & greatest ",
-    "subtitle": "All the best technologies out there!",
-    "description": "Join us on this exciting journey as we transform the way you experience shopping. Download SavyCart today and discover how to turn your shopping into more than just a task—elevating it to an optimized and rewarding experience.",
+    "title": "What changes when you switch",
+    "description": "Four things SavyCart does that a note in your pocket never will.",
     "items": [
       {
-        "name": "Product List Management",
-        "description": "Create, edit, and organize product lists with ease. Customize your lists to suit your needs and preferences.",
-        "icon": "/assets/features/list.png"
+        "sentence": "Star the staples you always buy",
+        "consequence": "Favorites filter puts your regulars at the top of every list.",
+        "defaultOn": true
       },
       {
-        "name": "Purchase History",
-        "description": "Keep a detailed record of all your past purchases. Quickly access your previous lists and ensure no essential items are forgotten.",
-        "icon": "/assets/features/history.png"
+        "sentence": "Keep shopping without a signal",
+        "consequence": "Offline support — your list stays on the device in the aisle.",
+        "defaultOn": true
       },
       {
-        "name": "Price Tracking",
-        "description": "Observe how prices of your favorite products fluctuate over time. Our price tracking feature helps you make informed decisions and save money.",
-        "icon": "/assets/features/tag.png"
+        "sentence": "See tax before you pay",
+        "consequence": "Checkout totals include tax so the receipt never surprises you.",
+        "defaultOn": false
       },
       {
-        "name": "Customized Configuration",
-        "description": "Tailor the app to your shopping style. Add preferred brands, measurement units, specific categories, and favorite products for a unique experience.",
-        "icon": "/assets/features/settings.png"
+        "sentence": "Track what each trip cost",
+        "consequence": "Place, date, and total saved for every shopping run you finish.",
+        "defaultOn": false
       }
     ]
   },
-  "pricing": {
-    "title": "Pricing",
-    "items": [
+  "howItWorks": {
+    "title": "Three steps",
+    "description": "From an empty list to a clear picture of your spending.",
+    "steps": [
       {
-        "name": "Free",
-        "price": "$0",
-        "priceDetails": "for one user",
-        "features": [
-          "1 user",
-          "Basic Support",
-          "1 GB of storage",
-          "Email support"
-        ]
+        "lead": "First, build the list.",
+        "call": "Arroz, Nuggets, Oregano…",
+        "responseLabel": "Products land with unit and price",
+        "responseKind": "list"
       },
       {
-        "name": "Pro",
-        "price": "$15",
-        "priceDetails": "per user",
-
-        "features": [
-          "5 users",
-          "Priority Support",
-          "10 GB of storage",
-          "Phone and Email support"
-        ]
+        "lead": "Then shop it.",
+        "call": "2 × Arroz  ·  $270",
+        "responseLabel": "Quantity, subtotal, and tax at checkout",
+        "responseKind": "cart"
       },
       {
-        "name": "Enterprise",
-        "price": "$29",
-        "priceDetails": "per user",
-        "features": [
-          "50 users",
-          "24/7 Support",
-          "100 GB of storage",
-          "Phone and Email support"
-        ]
+        "lead": "Then review the trip.",
+        "call": "La sirena  ·  2023-06-21",
+        "responseLabel": "Place, date, and total — saved forever",
+        "responseKind": "history"
       }
     ]
+  },
+  "finalCta": {
+    "title": "Start your next list",
+    "description": "Free on iPhone and in the browser. Your history syncs when you are online.",
+    "primaryAction": {
+      "text": "Download on the App Store",
+      "href": "https://apps.apple.com/app/savycart/id6458534889"
+    },
+    "secondaryAction": {
+      "text": "Open web version",
+      "href": "https://sheiley-shop.netlify.app"
+    }
   },
   "about": {
+    "title": "Made for real shopping trips",
+    "description": "SavyCart is an open-source PWA and iOS app for tracking personal purchases. It replaces the notebook in your pocket with a list that remembers prices, keeps your history, and works offline in the aisle.",
     "socialMedia": {
       "github": "https://github.com/itsalb3rt/sheiley-shop-app",
       "twitter": "https://twitter.com/alhidalgodev",
       "linkedin": "https://www.linkedin.com/in/alhidalgodev"
     }
+  },
+  "footer": {
+    "tagline": "SavyCart — grocery lists, tracked",
+    "links": [
+      {
+        "name": "Policy",
+        "href": "/policy"
+      },
+      {
+        "name": "Terms",
+        "href": "/terms"
+      },
+      {
+        "name": "GitHub",
+        "href": "https://github.com/itsalb3rt/sheiley-shop-app"
+      }
+    ]
   }
 }

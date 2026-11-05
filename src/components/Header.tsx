@@ -6,118 +6,138 @@ import { Link } from 'react-scroll';
 
 import config from '../config/index.json';
 
-const Menu = () => {
+const Header = () => {
   const { navigation, company, callToAction } = config;
   const { name: companyName, logo } = company;
 
   return (
-    <>
-      <svg
-        className={`hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-background transform translate-x-1/2`}
-        fill="currentColor"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        aria-hidden="true"
+    <header className="relative z-40">
+      <nav
+        className="mx-auto flex max-w-[1400px] items-center justify-between px-5 pt-6 md:px-10 md:pt-8"
+        aria-label="Global"
       >
-        <polygon points="50,0 100,0 50,100 0,100" />
-      </svg>
+        <a
+          href="#"
+          className="flex items-center gap-3"
+          aria-label={companyName}
+        >
+          <img
+            src={logo}
+            alt=""
+            className="h-9 w-9 md:h-10 md:w-10"
+            width={40}
+            height={40}
+          />
+          <span className="display text-[17px] tracking-tight text-ink md:text-[18px]">
+            {companyName}
+          </span>
+        </a>
 
-      <Popover>
-        <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
-          <nav
-            className="relative flex items-center justify-between sm:h-10 lg:justify-start"
-            aria-label="Global"
+        <div className="hidden items-center gap-8 md:flex">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
+              href={`#${item.href}`}
+              spy={true}
+              smooth={true}
+              duration={800}
+              offset={-72}
+              className="text-small cursor-pointer font-medium text-muted transition-colors hover:text-ink"
+            >
+              {item.name}
+            </Link>
+          ))}
+          <a
+            href={callToAction.href}
+            className="btn btn-primary !px-5 !py-2.5 !text-[14px]"
           >
-            <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-              <div className="flex items-center justify-between w-full md:w-auto">
-                <a href="#">
-                  <span className="sr-only">{companyName}</span>
-                  <img alt="logo" className="h-16 w-auto sm:h-16" src={logo} />
-                </a>
-                <div className="-mr-2 flex items-center md:hidden">
-                  <Popover.Button
-                    className={`bg-background rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary`}
-                  >
-                    <span className="sr-only">Open main menu</span>
-                    <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                  </Popover.Button>
-                </div>
-              </div>
-            </div>
-            <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-              {navigation.map((item) => (
-                <Link
-                  spy={true}
-                  active="active"
-                  smooth={true}
-                  duration={1000}
-                  key={item.name}
-                  to={item.href}
-                  className="font-medium text-gray-500 hover:text-gray-900"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </nav>
+            {callToAction.text}
+          </a>
         </div>
 
-        <Transition
-          as={Fragment}
-          enter="duration-150 ease-out"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="duration-100 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          <Popover.Panel
-            focus
-            className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href={callToAction.href}
+            className="btn btn-primary !px-3.5 !py-2 !text-[13px]"
           >
-            <div
-              className={`rounded-lg shadow-md bg-background ring-1 ring-black ring-opacity-5 overflow-hidden`}
-            >
-              <div className="px-5 pt-4 flex items-center justify-between">
-                <div>
-                  <img className="h-8 w-auto" src={logo} alt="" />
-                </div>
-                <div className="-mr-2">
+            {callToAction.text}
+          </a>
+          <div>
+            <Popover>
+              {({ open }) => (
+                <>
                   <Popover.Button
-                    className={`bg-background rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary`}
+                    className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-page)] text-ink hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    aria-label={open ? 'Close menu' : 'Open menu'}
                   >
-                    <span className="sr-only">Close main menu</span>
-                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    {open ? (
+                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    ) : (
+                      <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                    )}
                   </Popover.Button>
-                </div>
-              </div>
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {navigation.map((item) => (
-                  <Link
-                    spy={true}
-                    active="active"
-                    smooth={true}
-                    duration={1000}
-                    key={item.name}
-                    to={item.href}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-200"
+                    enterFrom="opacity-0 -translate-y-2"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-out duration-150"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 -translate-y-2"
                   >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-              <a
-                href={callToAction.href}
-                className={`block w-full px-5 py-3 text-center font-medium text-primary bg-gray-50 hover:bg-gray-100`}
-              >
-                {callToAction.text}
-              </a>
-            </div>
-          </Popover.Panel>
-        </Transition>
-      </Popover>
-    </>
+                    {/* real overlay menu */}
+                    <Popover.Panel
+                      focus
+                      className="absolute inset-x-4 top-4 z-50 rounded-[var(--radius-page)] bg-surface p-5 shadow-lg ring-1 ring-ink/10" // taste-skill-ignore
+                    >
+                      <div className="flex items-center justify-between">
+                        <img
+                          src={logo}
+                          alt=""
+                          className="h-8 w-8"
+                          width={32}
+                          height={32}
+                        />
+                        <Popover.Button
+                          className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-page)] text-ink hover:bg-bg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                          aria-label="Close menu"
+                        >
+                          <XMarkIcon className="h-5 w-5" aria-hidden="true" />
+                        </Popover.Button>
+                      </div>
+                      <div className="mt-5 flex flex-col gap-1">
+                        {navigation.map((item) => (
+                          <Link
+                            key={item.name}
+                            to={item.href}
+                            href={`#${item.href}`}
+                            spy={true}
+                            smooth={true}
+                            duration={800}
+                            offset={-72}
+                            className="rounded-[var(--radius-page)] px-3 py-3 text-body font-medium text-ink hover:bg-bg"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                      <a
+                        href={callToAction.href}
+                        className="btn btn-primary mt-4 w-full"
+                      >
+                        {callToAction.text}
+                      </a>
+                    </Popover.Panel>
+                  </Transition>
+                </>
+              )}
+            </Popover>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 };
 
-export default Menu;
+export default Header;

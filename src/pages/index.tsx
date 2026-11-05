@@ -1,45 +1,41 @@
+import Head from 'next/head';
+
 import About from '../components/About';
 import Analytics from '../components/Analytics';
-import Canvas from '../components/Canvas';
 import Features from '../components/Features';
+import FinalCta from '../components/FinalCta';
 import Header from '../components/Header';
-import LazyShow from '../components/LazyShow';
-import MainHero from '../components/MainHero';
-import MainHeroImage from '../components/MainHeroImage';
-import Product from '../components/Product';
+import Hero from '../components/Hero';
+import HowItWorks from '../components/HowItWorks';
+import Showcase from '../components/Showcase';
+import { AppConfig } from '../utils/AppConfig';
 
 const App = () => {
   return (
-    <div className={`bg-background grid gap-y-16 overflow-hidden`}>
-      <div className={`relative bg-background`}>
-        <div className="max-w-7xl mx-auto">
-          <div
-            className={`relative z-10 pb-8 bg-background sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32`}
-          >
-            <Header />
-            <MainHero />
-          </div>
-        </div>
-        <MainHeroImage />
-      </div>
-      <Canvas />
-      <LazyShow>
-        <>
-          <Product />
-        </>
-      </LazyShow>
-      <LazyShow>
-        <>
+    <>
+      <Head>
+        <title>{AppConfig.title}</title>
+        <meta name="description" content={AppConfig.description} />
+        <meta property="og:title" content={AppConfig.title} />
+        <meta property="og:description" content={AppConfig.description} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={AppConfig.title} />
+        <meta name="twitter:description" content={AppConfig.description} />
+      </Head>
+      <div className="min-h-svh overflow-x-hidden bg-bg text-ink">
+        <Header />
+        <main>
+          <Hero />
+          <Showcase />
           <Features />
-        </>
-      </LazyShow>
-      <LazyShow>
-        <>
+          <HowItWorks />
+          <FinalCta />
           <About />
-        </>
-      </LazyShow>
-      <Analytics />
-    </div>
+        </main>
+        <Analytics />
+      </div>
+    </>
   );
 };
 

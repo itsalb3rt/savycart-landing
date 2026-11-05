@@ -1,34 +1,227 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #03a9f4;
-  --color-secondary: #03a9f4;
-  --color-tertiary: #99a0a3;
-  --color-border: #1a2e35;
-  --color-background: #ffffff;
+  --color-bg: #ddd6c6;
+  --color-surface: #d2cab8;
+  --color-ink: #2a2a26;
+  --color-muted: #4a4840;
+  --color-accent: #4f6238;
+  --color-accent-ink: #ffffff;
+  --color-field: #3f5a2a;
+
+  --font-display: 'Clash Grotesk', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+  --font-sans: 'Clash Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --radius-page: 4px;
 }
 
+:root {
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-display: clamp(26px, 2.1vw, 32px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Page-level links: ink by default, accent on hover. No underlines. */
 a {
-  @apply text-red-700;
+  color: inherit;
+  text-decoration: none;
 }
 
-a:hover {
-  @apply border-b-2 border-red-700;
+/* Display type */
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
 }
 
-.content p {
-  @apply my-6;
+.text-head {
+  font-size: var(--step-head);
 }
 
-.content ul {
-  @apply my-6;
+.text-lead {
+  font-size: var(--step-lead);
+  line-height: 1.4;
 }
 
-a {
-  color: var(--color-primary) !important;
+.text-body {
+  font-size: var(--step-body);
+  line-height: 1.5;
 }
 
-a:hover {
-  border: none !important;
+.text-small {
+  font-size: var(--step-small);
+  line-height: 1.45;
+}
+
+/* Masked headline reveal (signature motion) */
+.mask-line {
+  display: block;
+  overflow: hidden;
+}
+
+.mask-line > span {
+  display: block;
+  transform: translateY(110%);
+  animation: mask-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mask-line:nth-child(2) > span {
+  animation-delay: 0.11s;
+}
+
+@keyframes mask-rise {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.55s;
+}
+
+.fade-up-late {
+  animation-delay: 0.75s;
+}
+
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-line > span {
+    transform: none;
+    animation: none;
+  }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* Scroll entrances (driven by LazyShow / IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Buttons — one shape: rectangular, 4px radius */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-page);
+  font-weight: 500;
+  font-size: var(--step-body);
+  line-height: 1;
+  padding: 0.95rem 1.5rem;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
   cursor: pointer;
+  border: 1px solid transparent; /* taste-skill-ignore: button affordance */
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-field);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-ink);
+  color: var(--color-bg);
+}
+
+/* Product fragments keep their own conventions inside data-ui */
+[data-ui] {
+  font-family: var(--font-sans);
+}
+
+[data-ui] .ui-row {
+  transition: background-color 0.15s ease;
+}
+
+[data-ui] .ui-row:hover {
+  background-color: rgba(42, 42, 38, 0.04);
 }

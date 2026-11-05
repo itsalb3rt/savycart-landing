@@ -1,52 +1,93 @@
+import { useState } from 'react';
+
 import config from '../config/index.json';
+
+import Reveal from './Reveal';
 
 const Features = () => {
   const { features } = config;
-  const { title, subtitle, description, items: featuresList } = features;
-  return (
-    <div className={`py-12 bg-background`} id="features">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:text-center">
-          <h2
-            className={`text-base text-primary font-semibold tracking-wide uppercase`}
-          >
-            {title}
-          </h2>
-          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            {subtitle}
-          </p>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            {description}
-          </p>
-        </div>
+  const [on, setOn] = useState<boolean[]>(
+    features.items.map((item) => item.defaultOn),
+  );
 
-        <div className="mt-10">
-          <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-            {featuresList.map((feature) => (
-              <div key={feature.name} className="relative">
-                <dt>
-                  <div
-                    className={`absolute flex items-center justify-center h-12 w-12 rounded-md bg-background text-tertiary`}
-                  >
-                    <img
-                      className={`inline-block h-6 w-6`}
-                      src={feature.icon}
-                      alt={feature.name}
-                    />
-                  </div>
-                  <p className="ml-16 text-lg leading-6 font-medium text-gray-900">
-                    {feature.name}
-                  </p>
-                </dt>
-                <dd className="mt-2 ml-16 text-base text-gray-500">
-                  {feature.description}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+  const toggle = (index: number) => {
+    setOn((prev) => prev.map((v, i) => (i === index ? !v : v)));
+  };
+
+  return (
+    <section
+      id="features"
+      className="bg-bg pb-8 pt-24 md:pt-32"
+      aria-labelledby="features-heading"
+    >
+      <div className="mx-auto mb-12 max-w-[1400px] px-5 md:mb-16 md:px-10">
+        <Reveal>
+          <h2 id="features-heading" className="display text-head text-ink">
+            {features.title}
+          </h2>
+          <p className="mt-4 max-w-[46ch] text-body text-ink">
+            {features.description}
+          </p>
+        </Reveal>
       </div>
-    </div>
+
+      <div>
+        {features.items.map((item, index) => {
+          const isOn = on[index] ?? false;
+          const fieldClass = index % 2 === 0 ? 'bg-[#c9c0ab]' : 'bg-surface';
+          return (
+            <div
+              key={item.sentence}
+              className={`transition-colors duration-300 ${
+                isOn ? fieldClass : index % 2 === 0 ? 'bg-bg' : 'bg-[#d6cfc0]'
+              }`}
+            >
+              <div className="mx-auto flex min-h-[132px] max-w-[1400px] items-center gap-6 px-5 py-8 md:min-h-[20vh] md:gap-10 md:px-10">
+                <div className="min-w-0 flex-1">
+                  <p
+                    className={`display text-[clamp(26px,3.6vw,52px)] leading-[1.05] tracking-[-0.03em] transition-colors duration-300 ${
+                      isOn ? 'text-ink' : 'text-muted'
+                    }`}
+                  >
+                    {item.sentence}
+                  </p>
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity] duration-300 ${
+                      isOn
+                        ? 'mt-3 grid-rows-[1fr] opacity-100'
+                        : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <p className="overflow-hidden text-[15px] leading-snug text-ink/80 md:text-[17px]">
+                      {item.consequence}
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={isOn}
+                  aria-label={item.sentence}
+                  onClick={() => toggle(index)}
+                  className={`relative h-[34px] w-[58px] shrink-0 rounded-full transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-accent md:h-[38px] md:w-[66px] ${
+                    isOn ? 'bg-accent' : 'bg-ink/25'
+                  }`}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`absolute top-[3px] h-[28px] w-[28px] rounded-full bg-white transition-transform duration-200 md:h-[32px] md:w-[32px] ${
+                      isOn
+                        ? 'translate-x-[27px] md:translate-x-[31px]'
+                        : 'translate-x-[3px]'
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 };
 
